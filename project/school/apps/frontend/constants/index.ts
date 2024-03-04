@@ -1,1 +1,0 @@
-export const META_DESCRIPTION_MAX_LENGTH = 155;

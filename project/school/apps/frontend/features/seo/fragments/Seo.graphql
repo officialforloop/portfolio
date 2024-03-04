@@ -1,6 +1,0 @@
-fragment Seo on ComponentSharedSeo {
-  metaDescription
-  keywords
-  structuredData
-  preventIndexing
-}

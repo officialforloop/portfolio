@@ -1,9 +1,0 @@
-query FetchInfoSlugs {
-  pages {
-    data {
-      attributes {
-        slug
-      }
-    }
-  }
-}

@@ -1,0 +1,15 @@
+services:
+  portfolio:
+    build: .
+    ports:
+      - "1124:1124"
+    environment:
+      - NODE_ENV=production
+      - PORT=1124
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1124"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -1,82 +1,149 @@
-# Atech Portfolio Website
+# Portfolio Website
 
-Welcome to the **Atech Portfolio Website**, a personal portfolio created to showcase the web development and design work of **Tajudeen Mukhtar Ade (ATECH)**. This site highlights skills, services, projects, and client testimonials, and includes a contact form for potential clients.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
 
-## Table of Contents
+## 🚀 Features
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [File Structure](#file-structure)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Contact](#contact)
+- **Modern Design**: Clean, professional design with dark/light theme support
+- **Responsive**: Optimized for all devices and screen sizes
+- **Performance**: Built with Next.js 15 for optimal performance
+- **TypeScript**: Full type safety throughout the application
+- **Docker Ready**: Containerized for easy deployment
 
-## Features
+## 🛠️ Tech Stack
 
-- **Responsive Design**: Optimized for both desktop and mobile viewing.
-- **Portfolio Section**: Displays recent projects with filter options for different categories (UI/UX, e-commerce, website design).
-- **Services Overview**: Detailed sections for services like software development, front-end, back-end, and full-stack development.
-- **Skills and Experience**: Highlights technical proficiencies and years of experience.
-- **Testimonials**: Shows feedback from satisfied clients.
-- **Contact Form**: A simple form for visitors to send messages directly through the site.
-- **Embedded Video**: A modal to play an introductory portfolio video.
-- **Downloadable CV**: A button for visitors to download ATECH's CV.
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS, Radix UI Components
+- **Deployment**: Docker, Docker Compose
+- **Icons**: Lucide React
 
-## Technologies Used
+## 🏃‍♂️ Getting Started
 
-- **HTML5**: Structure and layout.
-- **CSS3**: Styling, including custom styles and Bootstrap framework.
-- **JavaScript**: Adds interactivity, animation, and dynamic content.
-- **Bootstrap 5**: For responsive grid layout and components.
-- **Font Awesome**: For icons.
-- **Google Fonts**: `Open Sans` for typography.
-- **Owl Carousel**: For the testimonial slider.
-- **Lightbox**: For displaying images in an overlay.
+### Local Development
 
-## File Structure
-
-```html
-/index.html               - Main HTML file
-/css/style.css            - Custom CSS for the site
-/lib/                     - External libraries (Bootstrap, jQuery, etc.)
-/img/                     - Image assets used on the site
-/js/main.js               - JavaScript for interactivity and animations
-```
-
-## Usage
-
-### How to Run Locally
-
-1. **Clone the Repository**:
-
+1. **Install dependencies**:
    ```bash
-   git clone https://github.com/officialforloop/portfolio.git
+   npm install
    ```
 
-2. **Open the HTML File**:
-   Navigate to the cloned folder and open `index.html` in any modern web browser to view the site.
+2. **Run development server**:
+   ```bash
+   npm run dev
+   ```
 
-### Dependencies
+3. **Open browser**:
+   Navigate to `http://localhost:3000`
 
-Ensure the following dependencies are linked correctly:
+### Building for Production
 
-- **Bootstrap**
-- **Font Awesome**
-- **Owl Carousel**
-- **Lightbox**
+```bash
+npm run build
+npm start
+```
 
-## Customization
+## 🐳 Docker Deployment
 
-You can easily customize the portfolio by modifying the following:
+### VPS Deployment (Port 1124)
 
-- **HTML**: Update personal information, services, and project descriptions in `index.html`.
-- **CSS**: Modify styles in `css/style.css` to change the site's look and feel.
-- **Images**: Replace images in the `/img/` folder to update profile pictures or project visuals.
-- **JavaScript**: Adjust interactive elements or animations in `js/main.js`.
+This project is configured to run on port 1124 and includes automated VPS deployment.
 
-## Contact
+### Prerequisites
 
-For any questions or collaboration inquiries, feel free to reach out:
+- Docker and Docker Compose installed on your VPS
+- SSH access to your VPS
 
-- **Email**: [mk.messilless@gmail.com](mailto:mk.messilless@gmail.com)
-- **Phone**: +2349060292183, +2347015855558
+### Automated Deployment
+
+1. **Make the deployment script executable** (already done):
+   ```bash
+   chmod +x vps-copy.sh
+   ```
+
+2. **Run the deployment script**:
+   ```bash
+   ./vps-copy.sh
+   ```
+
+   The script will:
+   - Check if the portfolio folder exists on VPS, create if needed
+   - Copy all files except `node_modules`, `.next`, and `.git`
+   - Build and run Docker containers
+   - Start the application on port 1124
+
+3. **Access your portfolio**:
+   ```
+   http://84.247.186.191:1124
+   ```
+
+### Manual Docker Commands
+
+If you prefer to run Docker commands manually:
+
+```bash
+# On your VPS
+cd /home/muktar/portfolio
+
+# Stop existing containers
+docker-compose down
+
+# Build and start
+docker-compose up --build -d
+
+# Check status
+docker-compose ps
+
+# View logs
+docker-compose logs -f
+```
+
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── projects/[slug]/    # Dynamic project pages
+│   └── ...
+├── components/             # Reusable React components
+│   ├── ui/                # Base UI components
+│   └── ...
+├── public/                # Static assets
+├── lib/                   # Utility functions
+└── ...
+```
+
+## 🔧 Configuration
+
+- **Port**: 1124 (configurable via PORT environment variable)
+- **Node Environment**: Production
+- **Next.js Output**: Standalone for Docker optimization
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. **Build fails**: Ensure all dependencies are installed with `npm ci`
+2. **Port already in use**: Change the port in `docker-compose.yml`
+3. **Permission denied**: Make sure Docker has proper permissions on VPS
+
+### Health Check
+
+The deployment includes a health check that verifies the application is running:
+```bash
+curl http://localhost:1124
+```
+
+## 📝 Environment Variables
+
+- `PORT`: Application port (default: 1124)
+- `NODE_ENV`: Node environment (production)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.

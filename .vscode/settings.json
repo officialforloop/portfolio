@@ -1,0 +1,21 @@
+{
+  // Treat the project globals file as PostCSS so Tailwind/PostCSS at-rules are understood
+  "files.associations": {
+    "globals.css": "postcss"
+  },
+
+  // Disable the built-in CSS validator (use PostCSS validation instead)
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "postcss.validate": true,
+
+  // Ignore unknown at-rules reports from the CSS linter (helps with @tailwind, @apply, etc.)
+  "css.lint.unknownAtRules": "ignore",
+
+  // Help Tailwind extension pick up PostCSS files if installed
+  "tailwindCSS.includeLanguages": {
+    "postcss": "css",
+    "css": "css"
+  }
+}
